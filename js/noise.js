@@ -1,4 +1,4 @@
-import { simplex } from "./simplex-noise.js";
+import { simplex } from "../simplex-noise.js";
 
 export const noise = (function () {
   class _NoiseGenerator {
