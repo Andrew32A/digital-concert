@@ -6,5 +6,5 @@ import { GammaCorrectionShader } from "https://cdn.skypack.dev/three@0.136/examp
 import { RenderPass } from "https://cdn.skypack.dev/three@0.136/examples/jsm/postprocessing/RenderPass.js";
 import { FXAAShader } from "https://cdn.skypack.dev/three@0.136/examples/jsm/shaders/FXAAShader.js";
 
-import { helperFunction } from "./helperFunctions.js";
+import { helperFunctions } from "./helperFunctions.js";
 import { noise } from "./noise.js";

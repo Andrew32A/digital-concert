@@ -1,4 +1,4 @@
-export const math = (function () {
+export const helperFunctions = (function () {
   return {
     rand_range: function (a, b) {
       return Math.random() * (b - a) + a;
