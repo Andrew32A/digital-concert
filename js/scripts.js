@@ -1,3 +1,8 @@
+// ******************************************************************************************
+// credit to https://github.com/simondevyoutube for base code and tutorial
+// ******************************************************************************************
+
+// imports
 import * as THREE from "https://cdn.skypack.dev/three@0.136";
 
 import { EffectComposer } from "https://cdn.skypack.dev/three@0.136/examples/jsm/postprocessing/EffectComposer.js";
@@ -9,10 +14,6 @@ import { FXAAShader } from "https://cdn.skypack.dev/three@0.136/examples/jsm/sha
 import { math } from "./math.js";
 import { noise } from "./noise.js";
 
-function clamp(x, a, b) {
-  return Math.min(Math.max(x, a), b);
-}
-
 const KEYS = {
   a: 65,
   s: 83,
@@ -20,6 +21,7 @@ const KEYS = {
   d: 68,
 };
 
+// user input for movement and camera
 class InputController {
   constructor(target) {
     this.target_ = target || document;
@@ -121,6 +123,7 @@ class InputController {
   }
 }
 
+// display from first person perspective
 class FirstPersonCamera {
   constructor(camera, objects) {
     this.camera_ = camera;
@@ -227,7 +230,7 @@ class FirstPersonCamera {
     const yh = this.input_.current_.mouseYDelta / window.innerHeight;
 
     this.phi_ += -xh * this.phiSpeed_;
-    this.theta_ = clamp(
+    this.theta_ = math.clamp(
       this.theta_ + -yh * this.thetaSpeed_,
       -Math.PI / 3,
       Math.PI / 3
@@ -283,6 +286,7 @@ class LinearSpline {
   }
 }
 
+// main entry point
 class FirstPersonCameraDemo {
   constructor() {
     this.initialize_();
@@ -717,10 +721,16 @@ class FirstPersonCameraDemo {
 
 let _APP = null;
 
+// to cercumvent autoplay policy
 window.addEventListener("DOMContentLoaded", () => {
   const _Setup = () => {
     _APP = new FirstPersonCameraDemo();
     document.body.removeEventListener("click", _Setup);
   };
   document.body.addEventListener("click", _Setup);
+
+  // lock mouse pointer on click
+  document.body.addEventListener("click", () => {
+    _APP.threejs_.domElement.requestPointerLock();
+  });
 });

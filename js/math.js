@@ -1,3 +1,4 @@
+// helper functions for math
 export const math = (function () {
   return {
     rand_range: function (a, b) {
