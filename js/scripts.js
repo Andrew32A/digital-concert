@@ -382,9 +382,10 @@ class FirstPersonCameraDemo {
     this.scene_.add(light);
     this.scene_.add(light.target);
 
-    const upColour = 0xffff80;
-    const downColour = 0x808080;
-    light = new THREE.HemisphereLight(upColour, downColour, 0.5);
+    // acts kind of like a fill light or URP from unity
+    const upColor = 0xffe5b4; // pastel yellow
+    const downColor = 0xc0c0c0; // pastel gray
+    light = new THREE.HemisphereLight(upColor, downColor, 0.5);
     light.color.setHSL(0.6, 1, 0.6);
     light.groundColor.setHSL(0.095, 1, 0.75);
     light.position.set(0, 4, 0);
@@ -506,24 +507,6 @@ class FirstPersonCameraDemo {
     }
 
     this.fpsCamera_ = new FirstPersonCamera(this.camera_, this.objects_);
-
-    // Crosshair
-    const crosshair = mapLoader.load("resources/crosshair.png");
-    crosshair.anisotropy = maxAnisotropy;
-
-    this.sprite_ = new THREE.Sprite(
-      new THREE.SpriteMaterial({
-        map: crosshair,
-        color: 0xffffff,
-        fog: false,
-        depthTest: false,
-        depthWrite: false,
-      })
-    );
-    this.sprite_.scale.set(0.15, 0.15 * this.camera_.aspect, 1);
-    this.sprite_.position.set(0, 0, -10);
-
-    // this.uiScene_.add(this.sprite_);
   }
 
   loadMaterial_(name, tiling) {
@@ -687,13 +670,13 @@ class FirstPersonCameraDemo {
         this.analyzer1Data_.shift();
       }
 
-      const colourSpline = new LinearSpline((t, a, b) => {
+      const colorSpline = new LinearSpline((t, a, b) => {
         const c = a.clone();
         return c.lerp(b, t);
       });
-      colourSpline.AddPoint(0.0, new THREE.Color(0x4040ff));
-      colourSpline.AddPoint(0.25, new THREE.Color(0xff4040));
-      colourSpline.AddPoint(1.0, new THREE.Color(0xffff80));
+      colorSpline.AddPoint(0.0, new THREE.Color(0x4040ff));
+      colorSpline.AddPoint(0.25, new THREE.Color(0xff4040));
+      colorSpline.AddPoint(1.0, new THREE.Color(0xffff80));
 
       const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14];
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
@@ -710,8 +693,8 @@ class FirstPersonCameraDemo {
             6 * freqScale +
             this.noise1_.Get(this.indexTimer_, r * 0.42142, i * 0.3455);
           speakerRow[i].scale.set(sc, 1, 1);
-          speakerRow[i].material.color.copy(colourSpline.Get(freqScale));
-          speakerRow[i].material.emissive.copy(colourSpline.Get(freqScale));
+          speakerRow[i].material.color.copy(colorSpline.Get(freqScale));
+          speakerRow[i].material.emissive.copy(colorSpline.Get(freqScale));
           speakerRow[i].material.emissive.multiplyScalar(freqScale ** 2);
         }
       }
