@@ -14,6 +14,7 @@ import { FXAAShader } from "https://cdn.skypack.dev/three@0.136/examples/jsm/sha
 import { math } from "./math.js";
 import { noise } from "./noise.js";
 
+// keycodes for movement
 const KEYS = {
   a: 65,
   s: 83,
@@ -287,7 +288,7 @@ class LinearSpline {
 }
 
 // main entry point
-class FirstPersonCameraDemo {
+class Main {
   constructor() {
     this.initialize_();
   }
@@ -482,6 +483,12 @@ class FirstPersonCameraDemo {
         speaker1_1.position.set(0, y * 0.35 - 3, x * 0.35);
         speaker1_1.castShadow = true;
         speaker1_1.receiveShadow = true;
+
+        // block properties
+        speaker1_1.scale.set(1, 1, 1); // scale of block
+        speaker1_1.material.color.set("black"); // color of block
+        speaker1_1.material.emissive.set("black"); // emissive color of the block
+
         speaker1Group.add(speaker1_1);
         row.push(speaker1_1);
       }
@@ -491,11 +498,12 @@ class FirstPersonCameraDemo {
 
     this.speakerMesh1_ = speaker1;
 
+    // anisotropy is a rendering technique that enhances the quality of texture filtering, particularly for textures that are viewed at oblique angles
+    // (determines the level of anisotropic filtering to be applied to the texture)
     const diffuseMap = mapLoader.load("resources/background-grey-dots.png");
     diffuseMap.anisotropy = maxAnisotropy;
 
-    // Create Box3 for each mesh in the scene so that we can
-    // do some easy intersection tests.
+    // create Box3 for each mesh in the scene so that we can do some easy intersection tests.
     const meshes = [plane, wall1, wall2, wall3, wall4];
 
     this.objects_ = [];
@@ -674,11 +682,11 @@ class FirstPersonCameraDemo {
         const c = a.clone();
         return c.lerp(b, t);
       });
-      colorSpline.AddPoint(0.0, new THREE.Color(0x4040ff));
-      colorSpline.AddPoint(0.25, new THREE.Color(0xff4040));
-      colorSpline.AddPoint(1.0, new THREE.Color(0xffff80));
+      colorSpline.AddPoint(0.0, new THREE.Color(0x000000)); // low frequency, black
+      colorSpline.AddPoint(0.25, new THREE.Color(0xffa6a6)); // mid frequency, pastel red
+      colorSpline.AddPoint(1.0, new THREE.Color(0xffffb3)); // high frequency, pastel yellow
 
-      const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14];
+      const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
         const data = this.analyzer1Data_[r];
         const speakerRow = this.speakerMeshes1_[r];
@@ -707,7 +715,7 @@ let _APP = null;
 // to cercumvent autoplay policy
 window.addEventListener("DOMContentLoaded", () => {
   const _Setup = () => {
-    _APP = new FirstPersonCameraDemo();
+    _APP = new Main();
     document.body.removeEventListener("click", _Setup);
   };
   document.body.addEventListener("click", _Setup);
