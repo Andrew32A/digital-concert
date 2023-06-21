@@ -686,7 +686,12 @@ class Main {
       colorSpline.AddPoint(0.25, new THREE.Color(0xffa6a6)); // mid frequency, pastel red
       colorSpline.AddPoint(1.0, new THREE.Color(0xffffb3)); // high frequency, pastel yellow
 
-      const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
+      //   const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
+      const remap = []; // remap to match speaker layout, puts low frequencies on the bottom
+      for (let i = 0; i < 64; i++) {
+        remap.push(i);
+      }
+
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
         const data = this.analyzer1Data_[r];
         const speakerRow = this.speakerMeshes1_[r];
