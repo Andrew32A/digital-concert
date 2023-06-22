@@ -420,7 +420,7 @@ class Main {
     const concreteMaterial = this.loadMaterial_("concrete3-", 4);
 
     const wall1 = new THREE.Mesh(
-      new THREE.BoxGeometry(100, 100, 4),
+      new THREE.BoxGeometry(100, 500, 4), // width, height, depth
       concreteMaterial
     );
     wall1.position.set(0, -40, -50);
@@ -429,7 +429,7 @@ class Main {
     this.scene_.add(wall1);
 
     const wall2 = new THREE.Mesh(
-      new THREE.BoxGeometry(100, 100, 4),
+      new THREE.BoxGeometry(100, 500, 4), // width, height, depth
       concreteMaterial
     );
     wall2.position.set(0, -40, 50);
@@ -438,7 +438,7 @@ class Main {
     this.scene_.add(wall2);
 
     const wall3 = new THREE.Mesh(
-      new THREE.BoxGeometry(4, 100, 100),
+      new THREE.BoxGeometry(4, 500, 100), // width, height, depth
       concreteMaterial
     );
     wall3.position.set(50, -40, 0);
@@ -447,7 +447,7 @@ class Main {
     this.scene_.add(wall3);
 
     const wall4 = new THREE.Mesh(
-      new THREE.BoxGeometry(4, 100, 100),
+      new THREE.BoxGeometry(4, 500, 100), // width, height, depth
       concreteMaterial
     );
     wall4.position.set(-50, -40, 0);
