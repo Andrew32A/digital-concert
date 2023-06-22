@@ -710,10 +710,9 @@ class Main {
         }
       }
 
+      // spotlight color that changes based on average frequency
       let spotlight1 = this.scene_.children[0];
       let spotlight2 = this.scene_.children[2];
-
-      // Calculate the average frequency from the data array
       let totalFrequency = 0;
       let numFrequencies = 0;
 
@@ -741,10 +740,8 @@ class Main {
       const s = 0.5;
       const l = 0.5;
 
-      console.log(h, s, l);
-
       const color = new THREE.Color();
-      color.setHSL(h, s, l); // divide h by 360 to normalize it between 0 and 1
+      color.setHSL(h, s, l);
 
       spotlight1.color = color;
       spotlight2.color = color;
