@@ -345,6 +345,7 @@ class Main {
 
     let light = null;
 
+    // spotlight on speaker
     light = new THREE.SpotLight(
       0xffffff,
       100.0,
@@ -364,6 +365,7 @@ class Main {
     this.scene_.add(light);
     this.scene_.add(light.target);
 
+    // spotlight above speaker
     light = new THREE.SpotLight(
       0xffffff,
       100.0,
@@ -378,8 +380,8 @@ class Main {
     light.shadow.mapSize.height = 4096;
     light.shadow.camera.near = 1;
     light.shadow.camera.far = 100;
-    light.position.set(35, 25, 0);
-    light.target.position.set(40, 4, 0);
+    light.position.set(-0, 25, 0);
+    light.target.position.set(-40, 4, 0);
     this.scene_.add(light);
     this.scene_.add(light.target);
 
@@ -666,8 +668,21 @@ class Main {
 
   step_(timeElapsed) {
     const timeElapsedS = timeElapsed * 0.001;
+    let spotlight1 = this.scene_.children[0]; // super jank, but these 2 are targetting the 2 spotlights
+    let spotlight2 = this.scene_.children[2];
 
     this.fpsCamera_.update(timeElapsedS);
+
+    // flashing lights, changes light color
+    const h = Math.random();
+    const s = Math.random();
+    const l = Math.random();
+
+    const color = new THREE.Color();
+    color.setHSL(h, s, l);
+
+    spotlight1.color = color;
+    spotlight2.color = color;
 
     if (this.analyzer1_) {
       this.indexTimer_ += timeElapsedS * 0.1;
