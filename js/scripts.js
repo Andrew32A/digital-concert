@@ -669,21 +669,7 @@ class Main {
 
   step_(timeElapsed) {
     const timeElapsedS = timeElapsed * 0.001;
-    let spotlight1 = this.scene_.children[0]; // super jank, but these 2 are targetting the 2 spotlights
-    let spotlight2 = this.scene_.children[2];
-
     this.fpsCamera_.update(timeElapsedS);
-
-    // flashing lights, changes light color
-    const h = Math.random();
-    const s = Math.random();
-    const l = Math.random();
-
-    const color = new THREE.Color();
-    color.setHSL(h, s, l);
-
-    spotlight1.color = color;
-    spotlight2.color = color;
 
     if (this.analyzer1_) {
       this.indexTimer_ += timeElapsedS * 0.1;
@@ -703,10 +689,6 @@ class Main {
       colorSpline.AddPoint(1.0, new THREE.Color(0xffffb3)); // high frequency, pastel yellow
 
       const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
-      //   const remap = []; // remap to match speaker layout, puts low frequencies on the bottom
-      //   for (let i = 0; i < 64; i++) {
-      //     remap.push(i);
-      //   }
 
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
         const data = this.analyzer1Data_[r];
@@ -727,6 +709,45 @@ class Main {
           speakerRow[i].material.emissive.multiplyScalar(freqScale ** 2);
         }
       }
+
+      let spotlight1 = this.scene_.children[0];
+      let spotlight2 = this.scene_.children[2];
+
+      // Calculate the average frequency from the data array
+      let totalFrequency = 0;
+      let numFrequencies = 0;
+
+      for (let r = 0; r < this.analyzer1Data_.length; ++r) {
+        const data = this.analyzer1Data_[r];
+        for (let i = 0; i < data.length; ++i) {
+          totalFrequency += data[remap[i]];
+          numFrequencies++;
+        }
+      }
+
+      const averageFrequency = totalFrequency / numFrequencies;
+
+      const minFrequency = 0;
+      const maxFrequency = 255;
+      const minHue = 0;
+      const maxHue = 360;
+
+      const mappedHue =
+        ((averageFrequency - minFrequency) * (maxHue - minHue)) /
+          (maxFrequency - minFrequency) +
+        minHue;
+
+      let h = mappedHue;
+      const s = 0.5;
+      const l = 0.5;
+
+      console.log(h, s, l);
+
+      const color = new THREE.Color();
+      color.setHSL(h, s, l); // divide h by 360 to normalize it between 0 and 1
+
+      spotlight1.color = color;
+      spotlight2.color = color;
     }
   }
 }
