@@ -312,13 +312,14 @@ class Main {
 
     this.speakerMesh1_.add(sound1);
 
+    // audio loader and settings
     const loader = new THREE.AudioLoader();
     loader.load("resources/music/song1.mp3", (buffer) => {
       setTimeout(() => {
         sound1.setBuffer(buffer);
         sound1.setLoop(true);
         sound1.setVolume(1.0);
-        sound1.setRefDistance(1);
+        sound1.setRefDistance(100);
         sound1.play();
         this.analyzer1_ = new THREE.AudioAnalyser(sound1, 32);
         this.analyzer1Data_ = [];
@@ -331,7 +332,7 @@ class Main {
       persistence: 0.5,
       lacunarity: 1.6,
       exponentiation: 1.0,
-      height: 1.0,
+      height: 20.0,
       scale: 0.1,
       seed: 1,
     });
@@ -348,7 +349,7 @@ class Main {
     // spotlight on speaker
     light = new THREE.SpotLight(
       0xffffff,
-      100.0,
+      100.0, // brightness
       distance,
       angle,
       penumbra,
@@ -368,7 +369,7 @@ class Main {
     // spotlight above speaker
     light = new THREE.SpotLight(
       0xffffff,
-      100.0,
+      100.0, // brightness
       distance,
       angle,
       penumbra,
@@ -701,11 +702,11 @@ class Main {
       colorSpline.AddPoint(0.25, new THREE.Color(0xffa6a6)); // mid frequency, pastel red
       colorSpline.AddPoint(1.0, new THREE.Color(0xffffb3)); // high frequency, pastel yellow
 
-      //   const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
-      const remap = []; // remap to match speaker layout, puts low frequencies on the bottom
-      for (let i = 0; i < 64; i++) {
-        remap.push(i);
-      }
+      const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
+      //   const remap = []; // remap to match speaker layout, puts low frequencies on the bottom
+      //   for (let i = 0; i < 64; i++) {
+      //     remap.push(i);
+      //   }
 
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
         const data = this.analyzer1Data_[r];
