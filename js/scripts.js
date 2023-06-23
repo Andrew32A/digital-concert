@@ -422,19 +422,6 @@ class Main {
     light.position.set(0, 4, 0);
     this.scene_.add(light);
 
-    const loader = new THREE.CubeTextureLoader();
-    const texture = loader.load([
-      "./resources/skybox/posx.jpg",
-      "./resources/skybox/negx.jpg",
-      "./resources/skybox/posy.jpg",
-      "./resources/skybox/negy.jpg",
-      "./resources/skybox/posz.jpg",
-      "./resources/skybox/negz.jpg",
-    ]);
-
-    texture.encoding = THREE.sRGBEncoding;
-    this.scene_.background = texture;
-
     const mapLoader = new THREE.TextureLoader();
     const maxAnisotropy = this.threejs_.capabilities.getMaxAnisotropy();
 
