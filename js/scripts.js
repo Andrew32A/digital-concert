@@ -813,7 +813,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", _Setup);
 
   // lock mouse pointer on click
-  document.body.addEventListener("click", () => {
-    _APP.threejs_.domElement.requestPointerLock();
-  });
+  //   document.body.addEventListener("click", () => {
+  //     _APP.threejs_.domElement.requestPointerLock();
+  //   });
 });
