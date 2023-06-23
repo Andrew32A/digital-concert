@@ -421,6 +421,7 @@ class Main {
     this.scene_.add(plane);
 
     const concreteMaterial = this.loadMaterial_("concrete3-", 4);
+    const speakerMaterial = this.loadMaterial_("concrete3-", 4);
 
     const wall1 = new THREE.Mesh(
       new THREE.BoxGeometry(100, 500, 4), // width, height, depth
@@ -457,6 +458,24 @@ class Main {
     wall4.castShadow = true;
     wall4.receiveShadow = true;
     this.scene_.add(wall4);
+
+    const block1 = new THREE.Mesh(
+      new THREE.BoxGeometry(5, 25, 8), // depth, height, width
+      speakerMaterial
+    );
+    block1.position.set(-40, 5, 25); // from speaker: front/back, up/down, left/right
+    block1.castShadow = true;
+    block1.receiveShadow = true;
+    this.scene_.add(block1);
+
+    const block2 = new THREE.Mesh(
+      new THREE.BoxGeometry(5, 25, 8), // depth, height, width
+      speakerMaterial
+    );
+    block2.position.set(-40, 5, -25); // from speaker: front/back, up/down, left/right
+    block2.castShadow = true;
+    block2.receiveShadow = true;
+    this.scene_.add(block2);
 
     // MAIN SPEAKER
     const speaker1Material = this.loadMaterial_("worn_metal4_", 1);
@@ -689,13 +708,13 @@ class Main {
       colorSpline.AddPoint(0.25, new THREE.Color(0xffa6a6)); // mid frequency, pastel red
       colorSpline.AddPoint(1.0, new THREE.Color(0xffffb3)); // high frequency, pastel yellow
 
+      // remap to match speaker layout
       const remap = [];
       for (let x = -50; x <= 50; ++x) {
         for (let y = 0; y < 64; ++y) {
           remap.push((x + 50) * 64 + y);
         }
       }
-      // remap to match speaker layout
 
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
         const data = this.analyzer1Data_[r];
