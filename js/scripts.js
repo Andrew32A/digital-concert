@@ -421,7 +421,20 @@ class Main {
     this.scene_.add(plane);
 
     const concreteMaterial = this.loadMaterial_("concrete3-", 4);
-    const speakerMaterial = this.loadMaterial_("concrete3-", 4);
+
+    // ended up loading speaker texture in the audio loader, this loads the speaker texture
+    const speakerTexture = new THREE.TextureLoader().load(
+      "./resources/freepbr/speaker.png"
+    );
+    speakerTexture.anisotropy = maxAnisotropy;
+    speakerTexture.wrapS = THREE.MirroredRepeatWrapping;
+    speakerTexture.wrapT = THREE.MirroredRepeatWrapping;
+    speakerTexture.repeat.set(1, 1);
+
+    // speaker material which was previously loaded above
+    const speakerMaterial = new THREE.MeshStandardMaterial({
+      map: speakerTexture,
+    });
 
     const wall1 = new THREE.Mesh(
       new THREE.BoxGeometry(100, 500, 4), // width, height, depth
