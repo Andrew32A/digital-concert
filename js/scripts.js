@@ -321,7 +321,7 @@ class Main {
         sound1.setVolume(1.0);
         sound1.setRefDistance(100);
         sound1.play();
-        this.analyzer1_ = new THREE.AudioAnalyser(sound1, 32);
+        this.analyzer1_ = new THREE.AudioAnalyser(sound1, 128); // 32, 64, 128, 256 or 512, refers to how much frequency data is gathered
         this.analyzer1Data_ = [];
       }, 5000);
     });
@@ -667,6 +667,7 @@ class Main {
     });
   }
 
+  // main loop
   step_(timeElapsed) {
     const timeElapsedS = timeElapsed * 0.001;
     this.fpsCamera_.update(timeElapsedS);
@@ -688,7 +689,13 @@ class Main {
       colorSpline.AddPoint(0.25, new THREE.Color(0xffa6a6)); // mid frequency, pastel red
       colorSpline.AddPoint(1.0, new THREE.Color(0xffffb3)); // high frequency, pastel yellow
 
-      const remap = [15, 13, 11, 9, 7, 5, 3, 1, 0, 2, 4, 6, 8, 10, 12, 14]; // remap to match speaker layout
+      const remap = [];
+      for (let x = -50; x <= 50; ++x) {
+        for (let y = 0; y < 64; ++y) {
+          remap.push((x + 50) * 64 + y);
+        }
+      }
+      // remap to match speaker layout
 
       for (let r = 0; r < this.analyzer1Data_.length; ++r) {
         const data = this.analyzer1Data_[r];
