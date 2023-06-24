@@ -547,6 +547,9 @@ class Main {
 
     this.speakerMesh1_ = speaker1;
 
+    // exponential fog to blur the background and sharp corners
+    this.scene_.fog = new THREE.FogExp2(0x000000, 0.01); // color, density
+
     // anisotropy is a rendering technique that enhances the quality of texture filtering, particularly for textures that are viewed at oblique angles
     // (determines the level of anisotropic filtering to be applied to the texture)
     const diffuseMap = mapLoader.load("resources/background-grey-dots.png");
