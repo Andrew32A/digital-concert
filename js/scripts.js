@@ -639,7 +639,7 @@ class Main {
     const near = 1.0;
     const far = 1000.0;
     this.camera_ = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    this.camera_.position.set(-30, 2, 0);
+    this.camera_.position.set(-300, 2, 0);
 
     this.scene_ = new THREE.Scene();
 
