@@ -417,7 +417,7 @@ class Main {
     const upColor = 0xffe5b4; // pastel yellow
     const downColor = 0xc0c0c0; // pastel gray
     light = new THREE.HemisphereLight(upColor, downColor, 0.5);
-    light.color.setHSL(0.6, 1, 0.6);
+    light.color.setHSL(0.6, 0.5, 0.2);
     light.groundColor.setHSL(0.095, 1, 0.75);
     light.position.set(0, 4, 0);
     this.scene_.add(light);
