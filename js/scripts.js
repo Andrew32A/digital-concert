@@ -14,6 +14,10 @@ import { FXAAShader } from "https://cdn.skypack.dev/three@0.136/examples/jsm/sha
 import { math } from "./math.js";
 import { noise } from "./noise.js";
 
+// fps counter
+const fpsCounterElement = document.getElementById("fpsCounter");
+const clock = new THREE.Clock();
+
 // keycodes for movement
 const KEYS = {
   a: 65,
@@ -834,6 +838,18 @@ class Main {
 
       spotlight1.color = color;
       spotlight2.color = color;
+
+      // fps counter
+      const delta = clock.getDelta();
+      const fps = 1 / delta;
+
+      // displau fp counter
+      fpsCounterElement.textContent = "FPS: " + Math.round(fps);
+
+      // show the counter after a few frames to avoid an initial high spike
+      if (clock.elapsedTime > 1) {
+        fpsCounterElement.style.visibility = "visible";
+      }
     }
   }
 }
@@ -851,9 +867,5 @@ window.addEventListener("DOMContentLoaded", () => {
   // lock mouse pointer on click
   document.body.addEventListener("click", () => {
     _APP.threejs_.domElement.requestPointerLock();
-  });
-
-  document.addEventListener("mousemove", (e) => {
-    _APP.onMouseMove_(e);
   });
 });

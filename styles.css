@@ -7,3 +7,17 @@ body {
   padding: 0;
   overscroll-behavior: none;
 }
+
+#fpsCounter {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  border-radius: 5px;
+  pointer-events: none;
+  visibility: hidden;
+}
