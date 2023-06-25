@@ -563,26 +563,26 @@ class Main {
     this.speakerMesh1_ = speaker1;
 
     // audience
-    const audienceCount = 50; // number of audience
-    const audienceSize = 2; // size of each audience
-    const audienceColor = 0xffcc00; // color of the audience
+    // const audienceCount = 50; // number of audience
+    // const audienceSize = 2; // size of each audience
+    // const audienceColor = 0xffcc00; // color of the audience
 
-    const audienceGeometry = new THREE.SphereGeometry(audienceSize, 16, 16); // radius, widthSegments, heightSegments
-    const audienceMaterial = new THREE.MeshBasicMaterial({
-      color: audienceColor,
-    });
+    // const audienceGeometry = new THREE.SphereGeometry(audienceSize, 16, 16); // radius, widthSegments, heightSegments
+    // const audienceMaterial = new THREE.MeshBasicMaterial({
+    //   color: audienceColor,
+    // });
 
-    for (let i = 0; i < audienceCount; i++) {
-      const audience = new THREE.Mesh(audienceGeometry, audienceMaterial);
+    // for (let i = 0; i < audienceCount; i++) {
+    //   const audience = new THREE.Mesh(audienceGeometry, audienceMaterial);
 
-      // randomly distribute audience within a certain range
-      const posX = Math.random() * 5 - 5; // x position range: -200 to -20, left/right facing speaker
-      const posY = Math.random() * 10 - 0; // y position range: -10 to -20, up/down
-      const posZ = Math.random() * 100 - 10; // z position range: -100 to -10, front/back facing speaker
+    //   // randomly distribute audience within a certain range
+    //   const posX = Math.random() * 5 - 5; // x position range: -200 to -20, left/right facing speaker
+    //   const posY = Math.random() * 10 - 0; // y position range: -10 to -20, up/down
+    //   const posZ = Math.random() * 100 - 10; // z position range: -100 to -10, front/back facing speaker
 
-      audience.position.set(posX, posY, posZ);
-      this.scene_.add(audience);
-    }
+    //   audience.position.set(posX, posY, posZ);
+    //   this.scene_.add(audience);
+    // }
 
     // exponential fog to blur the background and sharp corners
     this.scene_.fog = new THREE.FogExp2(0x000000, 0.01); // color, density
@@ -843,7 +843,7 @@ class Main {
       const delta = clock.getDelta();
       const fps = 1 / delta;
 
-      // displau fp counter
+      // display fps counter
       fpsCounterElement.textContent = "FPS: " + Math.round(fps);
 
       // show the counter after a few frames to avoid an initial high spike
