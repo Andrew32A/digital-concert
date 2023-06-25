@@ -57,15 +57,26 @@ class InputController {
   }
 
   onMouseMove_(e) {
-    this.current_.mouseX = e.pageX - window.innerWidth / 2;
-    this.current_.mouseY = e.pageY - window.innerHeight / 2;
+    let movementX =
+      e.movementX ||
+      e.mozMovementX ||
+      e.webkitMovementX ||
+      e.clientX - this.current_.mouseX;
+    let movementY =
+      e.movementY ||
+      e.mozMovementY ||
+      e.webkitMovementY ||
+      e.clientY - this.current_.mouseY;
+
+    this.current_.mouseX = e.clientX;
+    this.current_.mouseY = e.clientY;
 
     if (this.previous_ === null) {
       this.previous_ = { ...this.current_ };
     }
 
-    this.current_.mouseXDelta = this.current_.mouseX - this.previous_.mouseX;
-    this.current_.mouseYDelta = this.current_.mouseY - this.previous_.mouseY;
+    this.current_.mouseXDelta = movementX;
+    this.current_.mouseYDelta = movementY;
   }
 
   onMouseDown_(e) {
@@ -838,7 +849,11 @@ window.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", _Setup);
 
   // lock mouse pointer on click
-  //   document.body.addEventListener("click", () => {
-  //     _APP.threejs_.domElement.requestPointerLock();
-  //   });
+  document.body.addEventListener("click", () => {
+    _APP.threejs_.domElement.requestPointerLock();
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    _APP.onMouseMove_(e);
+  });
 });
