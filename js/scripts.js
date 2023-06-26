@@ -325,6 +325,7 @@ class Main {
     });
 
     const menuGrab = document.getElementById("menu");
+    const overlayGrab = document.getElementById("overlay");
 
     document.addEventListener("keydown", (event) => {
       if (event.code === "Keyq" || event.code === "KeyQ") {
@@ -333,12 +334,13 @@ class Main {
           // unlock mouse from pointer lock
           document.exitPointerLock();
           menuGrab.style.display = "block";
+          overlayGrab.style.display = "block";
           isMenuVisible = true;
-          console.log("show menu");
         } else {
           // lock mouse from pointer lock
           document.body.requestPointerLock();
           menuGrab.style.display = "none";
+          overlayGrab.style.display = "none";
           isMenuVisible = false;
         }
       }
@@ -883,7 +885,7 @@ class Main {
 
 let _APP = null;
 
-// [had to use some local storage wizardry to get the song to change]
+// [had to use some local storage wizardry to get the song to change properly without bizzare audio bugs]
 // store the returned variable in localStorage
 function storeReturnedVariable(value) {
   localStorage.setItem("returnedVariable", JSON.stringify(value));
