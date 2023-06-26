@@ -17,6 +17,9 @@ import { noise } from "./noise.js";
 // store current song
 let currentSong;
 
+// camera bool
+let isCameraMovementEnabled = true;
+
 // fps counter
 const fpsCounterElement = document.getElementById("fpsCounter");
 const clock = new THREE.Clock();
@@ -64,18 +67,20 @@ class InputController {
   }
 
   onMouseMove_(e) {
-    let movementX = e.movementX;
-    let movementY = e.movementY;
+    if (isCameraMovementEnabled) {
+      let movementX = e.movementX;
+      let movementY = e.movementY;
 
-    this.current_.mouseX = e.clientX;
-    this.current_.mouseY = e.clientY;
+      this.current_.mouseX = e.clientX;
+      this.current_.mouseY = e.clientY;
 
-    if (this.previous_ === null) {
-      this.previous_ = { ...this.current_ };
+      if (this.previous_ === null) {
+        this.previous_ = { ...this.current_ };
+      }
+
+      this.current_.mouseXDelta = movementX;
+      this.current_.mouseYDelta = movementY;
     }
-
-    this.current_.mouseXDelta = movementX;
-    this.current_.mouseYDelta = movementY;
   }
 
   onMouseDown_(e) {
@@ -336,12 +341,14 @@ class Main {
           menuGrab.style.display = "block";
           overlayGrab.style.display = "block";
           isMenuVisible = true;
+          isCameraMovementEnabled = false;
         } else {
           // lock mouse from pointer lock
           document.body.requestPointerLock();
           menuGrab.style.display = "none";
           overlayGrab.style.display = "none";
           isMenuVisible = false;
+          isCameraMovementEnabled = true;
         }
       }
     });
