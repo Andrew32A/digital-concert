@@ -28,6 +28,7 @@ The project provides a first-person perspective view where you can navigate the 
 - Left click: Lock cursor
 - Escape: Unlock cursor
 - Play music: Spacebar
+- Open track selector menu: Q
 
 ### Dependencies
 
