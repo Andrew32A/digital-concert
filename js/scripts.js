@@ -541,7 +541,7 @@ class Main {
     const speaker1Group = new THREE.Group();
     speaker1Group.position.x = 0.5 + 0.125;
 
-    // blocks on speaker
+    // blocks on speaker, 6,464 blocks
     for (let x = -50; x <= 50; ++x) {
       const row = [];
       for (let y = 0; y < 64; ++y) {
