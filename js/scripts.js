@@ -407,31 +407,31 @@ class Main {
     this.scene_.add(light.target);
 
     // LAAAAAAAASER BEAMS
-    let beamRadiusTop = 0.01;
-    let beamRadiusBottom = 0.01;
-    let beamHeight = 100;
-    let beamSegments = 16;
-    let beamColor = 0x0000ff; // blue
+    // let beamRadiusTop = 0.01;
+    // let beamRadiusBottom = 0.01;
+    // let beamHeight = 100;
+    // let beamSegments = 16;
+    // let beamColor = 0x0000ff; // blue
 
-    // make 10 laser beams
-    for (let i = 0; i < 20; i++) {
-      let beamGeometry = new THREE.CylinderGeometry(
-        beamRadiusTop,
-        beamRadiusBottom,
-        beamHeight,
-        beamSegments
-      );
-      let beamMaterial = new THREE.MeshBasicMaterial({ color: beamColor });
-      let laserBeam = new THREE.Mesh(beamGeometry, beamMaterial);
+    // // make 10 laser beams
+    // for (let i = 0; i < 20; i++) {
+    //   let beamGeometry = new THREE.CylinderGeometry(
+    //     beamRadiusTop,
+    //     beamRadiusBottom,
+    //     beamHeight,
+    //     beamSegments
+    //   );
+    //   let beamMaterial = new THREE.MeshBasicMaterial({ color: beamColor });
+    //   let laserBeam = new THREE.Mesh(beamGeometry, beamMaterial);
 
-      // spawn position within a certain range
-      let spawnX = Math.random() * 90 - 30; // range: -30 to 60
-      let spawnZ = Math.random() * 90 - 30; // range: -30 to 60
+    //   // spawn position within a certain range
+    //   let spawnX = Math.random() * 90 - 30; // range: -30 to 60
+    //   let spawnZ = Math.random() * 90 - 30; // range: -30 to 60
 
-      laserBeam.position.set(spawnX, 0, spawnZ);
-      laserBeam.rotation.x = Math.PI; // point the beam upwards
-      this.scene_.add(laserBeam);
-    }
+    //   laserBeam.position.set(spawnX, 0, spawnZ);
+    //   laserBeam.rotation.x = Math.PI; // point the beam upwards
+    //   this.scene_.add(laserBeam);
+    // }
 
     // acts kind of like a fill light or URP from unity
     const upColor = 0xffe5b4; // pastel yellow
