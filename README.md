@@ -18,7 +18,7 @@ To run this project, follow these steps:
 
 The project provides a first-person perspective view where you can navigate the scene and interact with various elements.
 
-### Controls
+## Controls
 
 | Action                   | Key            |
 | ------------------------ | -------------- |
@@ -32,7 +32,7 @@ The project provides a first-person perspective view where you can navigate the 
 | Play music               | Spacebar       |
 | Open track selector menu | Q              |
 
-### Dependencies
+## Dependencies
 
 The project requires the following dependencies:
 
