@@ -912,7 +912,7 @@ const songList = document.getElementById("songList");
 songList.addEventListener("click", (event) => {
   const target = event.target;
 
-  // Check if the clicked element is a button
+  // check if the clicked element is a button
   if (target.tagName === "BUTTON") {
     const songName = target.getAttribute("data-song");
     changeSong(songName);
