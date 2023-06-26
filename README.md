@@ -50,6 +50,7 @@ These dependencies are included via the CDN links in the script imports section 
 - Music from Pixabay.
   - [Electronic Rock (King Around Here) By: AlexGrohl](https://pixabay.com/music/beats-electronic-rock-king-around-here-15045/)
   - [Lofi Study By: FASSounds](https://pixabay.com/music/beats-lofi-study-112191/)
+  - [Playing In Color By: 29811401](https://pixabay.com/music/beautiful-plays-playing-in-color-120336/)
 
 ## License
 
