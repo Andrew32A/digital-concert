@@ -14,6 +14,9 @@ import { FXAAShader } from "https://cdn.skypack.dev/three@0.136/examples/jsm/sha
 import { math } from "./math.js";
 import { noise } from "./noise.js";
 
+// store current song
+let currentSong;
+
 // fps counter
 const fpsCounterElement = document.getElementById("fpsCounter");
 const clock = new THREE.Clock();
@@ -252,8 +255,6 @@ class FirstPersonCamera {
       Math.PI / 3
     );
 
-    // console.log(this.input_.current_.mouseYDelta);
-
     const qx = new THREE.Quaternion();
     qx.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.phi_);
     const qz = new THREE.Quaternion();
@@ -304,22 +305,49 @@ class LinearSpline {
 
 // main entry point
 class Main {
-  constructor() {
+  constructor(songName) {
+    this.songName = songName;
     this.initialize_();
+    this.createMenu_();
   }
 
   initialize_() {
     this.initializeRenderer_();
     this.initializeScene_();
     this.initializePostFX_();
-    this.initializeAudio_();
+    this.initializeAudio_(this.songName);
 
     this.previousRAF_ = null;
     this.raf_();
     this.onWindowResize_();
   }
 
-  initializeAudio_() {
+  createMenu_() {
+    let isMenuVisible = false;
+
+    const songSelect = document.getElementById("menu");
+    songSelect.addEventListener("change", (event) => {
+      const selectedSong = event.target.value;
+      changeSong(selectedSong);
+    });
+
+    const menuGrab = document.getElementById("menu");
+
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Keyq" || event.code === "KeyQ") {
+        if (!isMenuVisible) {
+          menuGrab.style.display = "block";
+          isMenuVisible = true;
+          console.log("show menu");
+        } else {
+          menuGrab.style.display = "none";
+          isMenuVisible = false;
+        }
+      }
+    });
+  }
+
+  initializeAudio_(songName) {
     this.listener_ = new THREE.AudioListener();
     this.camera_.add(this.listener_);
 
@@ -329,9 +357,10 @@ class Main {
 
     // audio loader and settings, spacebar to start, user can only start once
     const loader = new THREE.AudioLoader();
-    loader.load("resources/music/song1.mp3", (buffer) => {
+    loader.load(`resources/music/${songName}.mp3`, (buffer) => {
       const handleKeyDown = (event) => {
         if (event.code === "Space") {
+          currentSong = sound1; // store the currently playing song
           sound1.setBuffer(buffer);
           sound1.setLoop(true);
           sound1.setVolume(0.5);
@@ -856,11 +885,48 @@ class Main {
 
 let _APP = null;
 
-// to cercumvent autoplay policy
+// [had to use some local storage wizardry to get the song to change]
+// store the returned variable in localStorage
+function storeReturnedVariable(value) {
+  localStorage.setItem("returnedVariable", JSON.stringify(value));
+  console.log(localStorage);
+}
+
+// retrieve the stored variable from localStorage
+function getStoredReturnedVariable() {
+  const storedValue = localStorage.getItem("returnedVariable");
+  return storedValue ? JSON.parse(storedValue) : null;
+}
+
+// helper function to change the song and reload the document
+function changeSong(songName) {
+  // store the returned variable
+  storeReturnedVariable(songName);
+
+  // reload the document
+  location.reload();
+}
+
+// event listener for the songList element
+const songList = document.getElementById("songList");
+songList.addEventListener("click", (event) => {
+  const target = event.target;
+
+  // Check if the clicked element is a button
+  if (target.tagName === "BUTTON") {
+    const songName = target.getAttribute("data-song");
+    changeSong(songName);
+  }
+});
+
+// to circumvent autoplay policy
 window.addEventListener("DOMContentLoaded", () => {
+  // retrieve the stored returned variable after document reload
+  const storedReturnedVariable = getStoredReturnedVariable();
   const _Setup = () => {
-    _APP = new Main();
+    _APP = new Main(storedReturnedVariable || "song2"); // use the stored returned variable if it exists, otherwise use the default song
     document.body.removeEventListener("click", _Setup);
+    console.log(storedReturnedVariable);
   };
   document.body.addEventListener("click", _Setup);
 
