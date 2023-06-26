@@ -1,5 +1,5 @@
 // ******************************************************************************************
-// credit to https://github.com/simondevyoutube for starter code and tutorial
+// credit to https://github.com/simondevyoutube for the starter code for first person camera, movement, and texture mapping.
 // ******************************************************************************************
 
 // imports
