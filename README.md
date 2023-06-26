@@ -25,8 +25,8 @@ The project provides a first-person perspective view where you can navigate the 
 - Strafe left: A
 - Strafe right: D
 - Look around: Move the mouse
-- Left click: Lock cursor
-- Escape: Unlock cursor
+- Lock cursor: Left click
+- Unlock cursor: Escape
 - Play music: Spacebar
 - Open track selector menu: Q
 
