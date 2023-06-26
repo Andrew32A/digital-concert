@@ -334,7 +334,7 @@ class Main {
         if (event.code === "Space") {
           sound1.setBuffer(buffer);
           sound1.setLoop(true);
-          sound1.setVolume(1.0);
+          sound1.setVolume(0.5);
           sound1.setRefDistance(100);
           sound1.play();
           this.analyzer1_ = new THREE.AudioAnalyser(sound1, 128);
