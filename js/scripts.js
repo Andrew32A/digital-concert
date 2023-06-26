@@ -327,18 +327,23 @@ class Main {
 
     this.speakerMesh1_.add(sound1);
 
-    // audio loader and settings
+    // audio loader and settings, spacebar to start, user can only start once
     const loader = new THREE.AudioLoader();
     loader.load("resources/music/song1.mp3", (buffer) => {
-      setTimeout(() => {
-        sound1.setBuffer(buffer);
-        sound1.setLoop(true);
-        sound1.setVolume(1.0);
-        sound1.setRefDistance(100);
-        sound1.play();
-        this.analyzer1_ = new THREE.AudioAnalyser(sound1, 128); // 32, 64, 128, 256 or 512, refers to how much frequency data is gathered
-        this.analyzer1Data_ = [];
-      }, 5000);
+      const handleKeyDown = (event) => {
+        if (event.code === "Space") {
+          sound1.setBuffer(buffer);
+          sound1.setLoop(true);
+          sound1.setVolume(1.0);
+          sound1.setRefDistance(100);
+          sound1.play();
+          this.analyzer1_ = new THREE.AudioAnalyser(sound1, 128);
+          this.analyzer1Data_ = [];
+          document.removeEventListener("keydown", handleKeyDown);
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
     });
 
     this.indexTimer_ = 0;
@@ -845,11 +850,6 @@ class Main {
 
       // display fps counter
       fpsCounterElement.textContent = "FPS: " + Math.round(fps);
-
-      // show the counter after a few frames to avoid an initial high spike
-      if (clock.elapsedTime > 1) {
-        fpsCounterElement.style.visibility = "visible";
-      }
     }
   }
 }
