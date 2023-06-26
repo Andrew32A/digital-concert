@@ -20,15 +20,17 @@ The project provides a first-person perspective view where you can navigate the 
 
 ### Controls
 
-- Move forward: W
-- Move backward: S
-- Strafe left: A
-- Strafe right: D
-- Look around: Move the mouse
-- Lock cursor: Left click
-- Unlock cursor: Escape
-- Play music: Spacebar
-- Open track selector menu: Q
+| Action                   | Key            |
+| ------------------------ | -------------- |
+| Move forward             | W              |
+| Move backward            | S              |
+| Strafe left              | A              |
+| Strafe right             | D              |
+| Look around              | Move the mouse |
+| Lock cursor              | Left click     |
+| Unlock cursor            | Escape         |
+| Play music               | Spacebar       |
+| Open track selector menu | Q              |
 
 ### Dependencies
 
