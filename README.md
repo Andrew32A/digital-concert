@@ -47,6 +47,7 @@ These dependencies are included via the CDN links in the script imports section 
 - [simondevyoutube](https://github.com/simondevyoutube) for the starter code for first person camera, movement, and texture mapping.
 - Simplex Noise, a fast javascript implementation of simplex noise by Jonas Wagner.
 - https://freepbr.com/ for the textures.
+- [Electronic Rock (King Around Here) By: AlexGrohl](https://pixabay.com/music/beats-electronic-rock-king-around-here-15045/) for the music from Pixabay.
 
 ## License
 
