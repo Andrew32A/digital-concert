@@ -49,6 +49,6 @@ body {
   color: #333333;
 }
 
-.menu a:hover {
+#menu a:hover {
   color: #ff0000;
 }

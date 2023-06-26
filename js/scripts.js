@@ -64,16 +64,8 @@ class InputController {
   }
 
   onMouseMove_(e) {
-    let movementX =
-      e.movementX ||
-      e.mozMovementX ||
-      e.webkitMovementX ||
-      e.clientX - this.current_.mouseX;
-    let movementY =
-      e.movementY ||
-      e.mozMovementY ||
-      e.webkitMovementY ||
-      e.clientY - this.current_.mouseY;
+    let movementX = e.movementX;
+    let movementY = e.movementY;
 
     this.current_.mouseX = e.clientX;
     this.current_.mouseY = e.clientY;
@@ -322,6 +314,7 @@ class Main {
     this.onWindowResize_();
   }
 
+  // hide and show menu for track selection
   createMenu_() {
     let isMenuVisible = false;
 
@@ -335,11 +328,16 @@ class Main {
 
     document.addEventListener("keydown", (event) => {
       if (event.code === "Keyq" || event.code === "KeyQ") {
+        // toggle menu visibility
         if (!isMenuVisible) {
+          // unlock mouse from pointer lock
+          document.exitPointerLock();
           menuGrab.style.display = "block";
           isMenuVisible = true;
           console.log("show menu");
         } else {
+          // lock mouse from pointer lock
+          document.body.requestPointerLock();
           menuGrab.style.display = "none";
           isMenuVisible = false;
         }
@@ -926,7 +924,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const _Setup = () => {
     _APP = new Main(storedReturnedVariable || "song2"); // use the stored returned variable if it exists, otherwise use the default song
     document.body.removeEventListener("click", _Setup);
-    console.log(storedReturnedVariable);
+    // console.log(storedReturnedVariable);
   };
   document.body.addEventListener("click", _Setup);
 
