@@ -144,7 +144,7 @@ class FirstPersonCamera {
   constructor(camera, objects) {
     this.camera_ = camera;
     this.input_ = new InputController();
-    this.phi_ = 0;
+    this.phi_ = Math.PI / 2; // starting angle looking 90 degrees to the left, spawns with a slight jolt in the beginning though - need to fix later
     this.phiSpeed_ = 8;
     this.theta_ = 0;
     this.thetaSpeed_ = 5;
