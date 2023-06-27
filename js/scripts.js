@@ -930,10 +930,12 @@ songList.addEventListener("click", (event) => {
 window.addEventListener("DOMContentLoaded", () => {
   // retrieve the stored returned variable after document reload
   const storedReturnedVariable = getStoredReturnedVariable();
+  // grab tutotial message element
+  const tutorialMessage = document.getElementById("tutorialMessage");
   const _Setup = () => {
     _APP = new Main(storedReturnedVariable || "song2"); // use the stored returned variable if it exists, otherwise use the default song
     document.body.removeEventListener("click", _Setup);
-    // console.log(storedReturnedVariable);
+    tutorialMessage.style.display = "none"; // hide the tutorial message
   };
   document.body.addEventListener("click", _Setup);
 

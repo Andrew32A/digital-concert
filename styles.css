@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
 body {
   width: 100%;
   height: 100%;
@@ -8,6 +12,32 @@ body {
   overscroll-behavior: none;
 }
 
+#tutorialMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 0;
+  animation: tutorialAnimation 1.25s forwards;
+}
+
+@keyframes tutorialAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
 #fpsCounter {
   position: fixed;
   top: 10px;
@@ -15,10 +45,21 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 5px;
-  font-family: Arial, sans-serif;
   font-size: 12px;
   border-radius: 5px;
   pointer-events: none;
+  animation: fpsCounterAnimation 0.75s linear forwards;
+}
+
+@keyframes fpsCounterAnimation {
+  0% {
+    transform: translateX(-100px); /* start offscreen */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* move to onscreen */
+    opacity: 1;
+  }
 }
 
 #menu {
