@@ -21,7 +21,6 @@ body {
   padding: 20px;
   border-radius: 5px;
   text-align: center;
-  font-size: 18px;
   pointer-events: none;
   opacity: 0;
   animation: tutorialAnimation 1.25s forwards;
@@ -39,11 +38,11 @@ body {
 }
 
 #tutorialMessage h2 {
-  font-size: 4em;
+  font-size: 2.75em;
 }
 
 #tutorialMessage p {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 #tutorialMessagePrompt {
@@ -59,7 +58,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 5px;
-  font-size: 12px;
+  font-size: 0.8em;
   border-radius: 5px;
   pointer-events: none;
   animation: fpsCounterAnimation 0.75s linear forwards;
