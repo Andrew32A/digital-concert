@@ -38,6 +38,20 @@ body {
   }
 }
 
+#tutorialMessage h2 {
+  font-size: 4em;
+}
+
+#tutorialMessage p {
+  font-size: 1.5em;
+}
+
+#tutorialMessagePrompt {
+  color: yellow;
+  font-style: italic;
+  font-weight: bold;
+}
+
 #fpsCounter {
   position: fixed;
   top: 10px;
@@ -49,6 +63,12 @@ body {
   border-radius: 5px;
   pointer-events: none;
   animation: fpsCounterAnimation 0.75s linear forwards;
+}
+
+#fpsCounterPrompt {
+  color: yellow;
+  font-style: italic;
+  font-weight: bold;
 }
 
 @keyframes fpsCounterAnimation {
