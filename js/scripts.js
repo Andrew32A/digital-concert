@@ -14,9 +14,6 @@ import { FXAAShader } from "https://cdn.skypack.dev/three@0.136/examples/jsm/sha
 import { math } from "./math.js";
 import { noise } from "./noise.js";
 
-// store current song
-let currentSong;
-
 // camera bool
 let isCameraMovementEnabled = true;
 
@@ -367,7 +364,6 @@ class Main {
     loader.load(`resources/music/${songName}.mp3`, (buffer) => {
       const handleKeyDown = (event) => {
         if (event.code === "Space") {
-          currentSong = sound1; // store the currently playing song
           sound1.setBuffer(buffer);
           sound1.setLoop(true);
           sound1.setVolume(0.5);
