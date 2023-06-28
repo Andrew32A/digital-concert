@@ -8,11 +8,11 @@ Powered by Three.js, this project features 6,464 nodes that dynamically change s
 
 ## Installation
 
-To run this project, follow these steps:
+To install and run this project, follow these steps:
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Open the index.html file in a web browser.
+1. Clone the repository
+2. Navigate to the project directory
+3. Open the index.html file in a web browser
 
 ## Features
 
@@ -42,27 +42,27 @@ To run this project, follow these steps:
 
 The project requires the following dependencies:
 
-- Three.js v0.136: The main library used for 3D rendering.
-- EffectComposer: Post-processing effects for the scene.
-- ShaderPass: Shader pass for post-processing.
-- GammaCorrectionShader: Shader for gamma correction.
-- RenderPass: Render pass for post-processing.
-- FXAAShader: Shader for anti-aliasing.
+- Three.js v0.136: The main library used for 3D rendering
+- EffectComposer: Post-processing effects for the scene
+- ShaderPass: Shader pass for post-processing
+- GammaCorrectionShader: Shader for gamma correction
+- RenderPass: Render pass for post-processing
+- FXAAShader: Shader for anti-aliasing
 
-These dependencies are included via the CDN links in the script imports section of the code.
+These dependencies are included via the CDN links in the script imports section of the code
 
 ## Credits
 
-- [Three.js](https://threejs.org/) for the 3D rendering.
-- [Canva](https://www.canva.com/) for the logo.
-- [simondevyoutube](https://github.com/simondevyoutube) for the starter code for first person camera, movement, and texture mapping.
-- Simplex Noise, a fast javascript implementation of simplex noise by Jonas Wagner.
-- https://freepbr.com/ for the textures.
-- Music from Pixabay.
+- [Three.js](https://threejs.org/) for the 3D rendering
+- [Canva](https://www.canva.com/) for the logo
+- [simondevyoutube](https://github.com/simondevyoutube) for the starter code for first person camera, movement, and texture mapping
+- Simplex Noise, a fast javascript implementation of simplex noise by Jonas Wagner
+- https://freepbr.com/ for the textures
+- Music from Pixabay:
   - [Electronic Rock (King Around Here) By: AlexGrohl](https://pixabay.com/music/beats-electronic-rock-king-around-here-15045/)
   - [Lofi Study By: FASSounds](https://pixabay.com/music/beats-lofi-study-112191/)
   - [Playing In Color By: 29811401](https://pixabay.com/music/beautiful-plays-playing-in-color-120336/)
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE)
