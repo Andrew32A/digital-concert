@@ -1,4 +1,4 @@
-# Digital Concert
+<img src="https://github.com/Andrew32A/digital-concert/blob/main/resources/title.png" align="center">
 
 Powered by Three.js, this project features 6,464 nodes that dynamically change size and color in sync with the music's frequencies. It incorporates head tracking and spatial audio, adjusting left and right channels based on the user's perspective. This fusion of music and technology offers an interactive and visually interesting environment, showcasing the potential of Three.js and real-time audio analysis for transformative experiences.
 
