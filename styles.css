@@ -23,22 +23,27 @@ body {
   text-align: center;
   pointer-events: none;
   opacity: 0;
-  animation: tutorialAnimation 1.25s forwards;
+  animation: tutorialAnimation 2s forwards;
 }
 
 @keyframes tutorialAnimation {
   0% {
     opacity: 0;
-    transform: translate(-50%, 100%);
+    /* transform: translate(-50%, -40%); */
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
   }
 }
 
-#tutorialMessage h2 {
-  font-size: 2.75em;
+#tutorialMessage img {
+  /* font-size: 2.75em; */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  max-height: 50vh;
 }
 
 #tutorialMessage p {
