@@ -1,6 +1,6 @@
 <img src="https://github.com/Andrew32A/digital-concert/blob/main/resources/title.png" align="center">
 
-Powered by Three.js, this project features 6,464 nodes that dynamically change size and color in sync with the music's frequencies. It incorporates head tracking and spatial audio, adjusting left and right channels based on the user's perspective. This fusion of music and technology offers an interactive and visually interesting environment, showcasing the potential of Three.js and real-time audio analysis for transformative experiences.
+Powered by Three.js, this project features 6,464 nodes that dynamically change size and color in sync with the music's frequencies. It incorporates spatial audio which adjusts left and right channels based on the user's perspective. This fusion of music and technology offers an interactive and visually interesting environment, showcasing the potential of Three.js and real-time audio analysis for transformative experiences.
 
 <h2 align="center"><a href="https://andrew32a.github.io/digital-concert/">Click here to try it out!</a></h3>
 
@@ -14,9 +14,15 @@ To run this project, follow these steps:
 2. Navigate to the project directory.
 3. Open the index.html file in a web browser.
 
-## Usage
+## Features
 
-The project provides a first-person perspective view where you can navigate the scene and interact with various elements.
+- 3D rendering with Three.js
+- 3D texture mapping
+- Real-time audio frequency analysis
+- Spatial audio
+- 6,464 dynamic nodes
+- Color changing strobe lights
+- Track selection menu
 
 ## Controls
 
