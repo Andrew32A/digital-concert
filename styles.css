@@ -57,6 +57,7 @@ body {
 }
 
 #fpsCounter {
+  display: none;
   position: fixed;
   top: 10px;
   left: 10px;
@@ -146,4 +147,12 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
+}
+
+#epilepsyWarning {
+  background-color: #f00;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }

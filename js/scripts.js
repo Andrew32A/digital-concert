@@ -926,12 +926,17 @@ songList.addEventListener("click", (event) => {
 window.addEventListener("DOMContentLoaded", () => {
   // retrieve the stored returned variable after document reload
   const storedReturnedVariable = getStoredReturnedVariable();
-  // grab tutotial message element
+  // grab tutorial message, fpscounter, epilepsyWarning elements
   const tutorialMessage = document.getElementById("tutorialMessage");
+  const fpsCounter = document.getElementById("fpsCounter");
+  const epilepsyWarning = document.getElementById("epilepsyWarning");
+
   const _Setup = () => {
     _APP = new Main(storedReturnedVariable || "song2"); // use the stored returned variable if it exists, otherwise use the default song
     document.body.removeEventListener("click", _Setup);
     tutorialMessage.style.display = "none"; // hide the tutorial message
+    epilepsyWarning.style.display = "none"; // hide the epilepsyWarning
+    fpsCounter.style.display = "block"; // show the fpsCounter
   };
   document.body.addEventListener("click", _Setup);
 
