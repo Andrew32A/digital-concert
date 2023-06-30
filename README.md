@@ -1,8 +1,10 @@
 <img src="https://github.com/Andrew32A/digital-concert/blob/main/resources/title.png" align="center">
 
-Powered by Three.js, this project features 6,464 nodes that dynamically change size and color in sync with the music's frequencies. It incorporates spatial audio which adjusts left and right channels based on the user's perspective. This fusion of music and technology offers an interactive and visually interesting environment, showcasing the potential of Three.js and real-time audio analysis for transformative experiences.
-
 <h2 align="center"><a href="https://andrew32a.github.io/digital-concert/">Click here to try it out!</a></h3>
+
+## About
+
+Powered by Three.js, this project features 6,464 nodes that dynamically change size and color in sync with the music's frequencies. It incorporates spatial audio which adjusts left and right channels based on the user's perspective. This fusion of music and technology offers an interactive and visually interesting environment, showcasing the potential of Three.js and real-time audio analysis for transformative experiences.
 
 <img src="https://github.com/Andrew32A/digital-concert/blob/main/resources/screenshots/screenshot1.png" align="center">
 
